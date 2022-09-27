@@ -40,10 +40,7 @@ Wheezy, 7
 */
 
 
-var challengeOneZooAnimals = from animal in zooAnimals
-                             where animal.Age >3 && animal.Age <8
-                             select animal;                         
-
+var challengeOneZooAnimals = zooAnimals.Where(a => a.Age > 3 && a.Age < 8);                 
 
 foreach (var zooAnimal in challengeOneZooAnimals)
 {
@@ -73,10 +70,8 @@ ASMODEUS
 */
 
 
-var challengeTwoZooAnimals = from animal in zooAnimals
-                             where animal.Name.Length >= 6
-                             select animal.Name.ToUpper();
-
+var challengeTwoZooAnimals = zooAnimals.Where(a => a.Name.Length >= 6).Select(z => z.Name.ToUpper());
+    
 foreach (var zooAnimal in challengeTwoZooAnimals)
 {
     Console.WriteLine($"{zooAnimal}");
@@ -111,10 +106,8 @@ Amber, 2
 */
 
 
-var challengeThreeZooAnimals = from animal in zooAnimals
-                               orderby animal.Age descending
-                               select animal;
-
+var challengeThreeZooAnimals = zooAnimals.OrderByDescending(a => a.Age);
+    
 foreach (var zooAnimal in challengeThreeZooAnimals)
 {
     Console.WriteLine($"{zooAnimal.Name}, {zooAnimal.Age}");
@@ -153,9 +146,7 @@ Zoo Location is: AnimalAdventure
         Hello, my name is Slothu.
 */
 
-var challengeFourZooAnimals = from animal in zooAnimals
-                              group animal by animal.Location into animal2
-                              select animal2;
+var challengeFourZooAnimals = zooAnimals.GroupBy(a => a.Location);
   
 foreach (var zooAnimal in challengeFourZooAnimals)
 {
