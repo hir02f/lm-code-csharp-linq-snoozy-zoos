@@ -39,14 +39,17 @@ Cuddles, 4
 Wheezy, 7
 */
 
-/*
-var challengeOneZooAnimals = // Write your LINQ Query here
+
+var challengeOneZooAnimals = from animal in zooAnimals
+                             where animal.Age >3 && animal.Age <8
+                             select animal;                         
+
 
 foreach (var zooAnimal in challengeOneZooAnimals)
 {
     Console.WriteLine($"{zooAnimal.Name}, {zooAnimal.Age}");
 }
-*/
+
 
 Console.WriteLine("***********************************************");
 
@@ -69,14 +72,16 @@ MUMBLE
 ASMODEUS
 */
 
-/*
-var challengeTwoZooAnimals = // Write your LINQ Query here
+
+var challengeTwoZooAnimals = from animal in zooAnimals
+                             where animal.Name.Length >= 6
+                             select animal.Name.ToUpper();
 
 foreach (var zooAnimal in challengeTwoZooAnimals)
 {
     Console.WriteLine($"{zooAnimal}");
 }
-*/
+
 
 Console.WriteLine("***********************************************");
 
@@ -105,14 +110,16 @@ Dave, 3
 Amber, 2
 */
 
-/* 
-var challengeThreeZooAnimals = // Write your LINQ Query here
+
+var challengeThreeZooAnimals = from animal in zooAnimals
+                               orderby animal.Age descending
+                               select animal;
 
 foreach (var zooAnimal in challengeThreeZooAnimals)
 {
     Console.WriteLine($"{zooAnimal.Name}, {zooAnimal.Age}");
 }
-*/
+
 
 Console.WriteLine("***********************************************");
 
@@ -146,9 +153,24 @@ Zoo Location is: AnimalAdventure
         Hello, my name is Slothu.
 */
 
-// var challengeFourZooAnimals = // Write your LINQ Query here
+var challengeFourZooAnimals = from animal in zooAnimals
+                              group animal by animal.Location into animal2
+                              select animal2;
+  
+foreach (var zooAnimal in challengeFourZooAnimals)
+{
+    Console.WriteLine($"Zoo Location is: {zooAnimal.Key}");
+    foreach (var animal in zooAnimal)
+    {
+        Console.WriteLine($"Hello, my name is {animal.Name}");
+    }
+}
 
 // Can you write a nested foreach loop to create the expected output above?
 
 Console.WriteLine("***********************************************");
+
+
+
+
 
